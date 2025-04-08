@@ -1,2 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
-@use 'main-styles.scss';
+
+$family-sans-serif: "Ninuto", "sans-serif";
+
+$control-border-width: 2px;
+$input-border-color: "transparent";
+$input-shadow: none;
+
+html, body {
+  height: 100%;
+}
+
+html {
+  background-image: url('./assets/background.svg');
+  background-color: chocolate;
+  background-size: cover;
+
+  overflow: auto !important;
+}
+
+body {
+  background-color: transparent !important;
+}
