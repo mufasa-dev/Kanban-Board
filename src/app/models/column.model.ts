@@ -5,6 +5,10 @@ export class Column {
   name: string = "";
   tasks: Task[] = [];
 
+  get tasksName() {
+    return this.tasks.map(x => x.title);
+  }
+
   constructor(id: number, name: string, tasks: Task[]) {
     this.name = name;
     this.tasks = tasks;
