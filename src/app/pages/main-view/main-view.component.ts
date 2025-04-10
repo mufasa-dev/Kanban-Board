@@ -3,14 +3,18 @@ import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, t
 import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main-view',
-  imports: [ CdkDrag, CdkDropList, CdkDropListGroup ],
+  imports: [ CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule  ],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss'
 })
 export class MainViewComponent implements OnInit {
+
+  public faCoffee = faCoffee;
 
   constructor() {}
 
