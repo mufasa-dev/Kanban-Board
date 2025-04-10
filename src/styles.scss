@@ -8,15 +8,3 @@ $input-shadow: none;
 html, body {
   height: 100%;
 }
-
-html {
-  background-image: url('./assets/background.svg');
-  background-color: chocolate;
-  background-size: cover;
-
-  overflow: auto !important;
-}
-
-body {
-  background-color: transparent !important;
-}
