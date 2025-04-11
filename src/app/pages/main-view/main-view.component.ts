@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, TemplateRef, WritableSignal } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
 import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faPencil, faSave } from '@fortawesome/free-solid-svg-icons';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main-view',
@@ -14,7 +15,12 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class MainViewComponent implements OnInit {
 
+  private modalService = inject(NgbModal);
+	closeResult: WritableSignal<string> = signal('');
+
   public faCoffee = faCoffee;
+  public faPencil = faPencil;
+  public faSave = faSave;
 
   constructor() {}
 
@@ -44,4 +50,26 @@ export class MainViewComponent implements OnInit {
       );
     }
   }
+
+  open(content: TemplateRef<any>, size: string = "xl") {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: size, centered: true }).result.then(
+			(result) => {
+				this.closeResult.set(`Closed with: ${result}`);
+			},
+			(reason) => {
+				this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
+			},
+		);
+	}
+
+	private getDismissReason(reason: any): string {
+		switch (reason) {
+			case ModalDismissReasons.ESC:
+				return 'by pressing ESC';
+			case ModalDismissReasons.BACKDROP_CLICK:
+				return 'by clicking on a backdrop';
+			default:
+				return `with: ${reason}`;
+		}
+	}
 }

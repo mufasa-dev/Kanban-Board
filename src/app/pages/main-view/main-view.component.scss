@@ -4,19 +4,17 @@
   height: 100%;
 }
 
+.nav-kanban {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+
 .app-name {
   font-family: 'Lato', sans-serif;
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 0;
   margin-left: 1rem;
-}
-
-.has-gradient-text {
-  color: #09e4e1;
-  background: -webkit-linear-gradient(#13f7f4, #2af598);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .board {
@@ -29,10 +27,12 @@
     background-color: white;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid #f5f5f5;
+    display: flex;
     .board-name {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 0;
+      margin-right: 5px;
     }
   }
 

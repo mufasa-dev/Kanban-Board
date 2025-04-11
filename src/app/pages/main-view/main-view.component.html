@@ -1,13 +1,16 @@
 <div class="root">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <h6 class="app-name has-gradient-text" href="#">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light nav-kanban">
+    <h6 class="app-name" href="#">
       <fa-icon [icon]="faCoffee" class="fa-xs"></fa-icon> Kanban
     </h6>
   </nav>
 
   <div class="board">
     <div class="board-bar">
-      <p class="board-name">{{board.name}}</p>
+      <p class="board-name">{{board.name}}  </p>
+      <button class="btn btn-sm color-primary" (click)="open(editBoard)">
+        <fa-icon [icon]="faPencil"></fa-icon>
+      </button>
     </div>
 
     <div class="board-wrapper">
@@ -33,3 +36,18 @@
     </div>
   </div>
 </div>
+
+<ng-template #editBoard let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Edit Board</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<h1>Edit Board</h1>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">
+      <fa-icon [icon]="faSave"></fa-icon> Save
+    </button>
+	</div>
+</ng-template>
