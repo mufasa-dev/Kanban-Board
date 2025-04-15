@@ -10,17 +10,22 @@ Welcome to the Kanban Board Application! 🚀 This is a dynamic web application 
 
 🚀 Powered by the speed and scalability of Angular 19.
 
+## 🌐 Live Demo on GitHub Pages
+You can access the live version of the application on GitHub Pages by clicking the link below:
+
+👉 [Kanban Board Live Demo](https://mufasa-dev.github.io/Kanban-Board/) 🔗
+
 ## 🛠️ Installation
-Clone this repository:
+#### Clone this repository:
 
 git clone https://github.com/mufasa-dev/kanban-board.git
-Navigate to the project folder:
+#### Navigate to the project folder:
 
 cd kanban-board
-Install dependencies:
+#### Install dependencies:
 
 npm install
-Run the application:
+#### Run the application:
 
 ng serve
 Open your browser and navigate to http://localhost:4200 🌐.
@@ -31,3 +36,6 @@ Angular 19 - Framework for building dynamic web applications.
 Bootstrap - CSS framework for responsive UI.
 
 TypeScript - Programming language for Angular development.
+
+## 📜 License
+This project is licensed under the MIT License. 📄
