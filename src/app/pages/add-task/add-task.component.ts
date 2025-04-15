@@ -30,7 +30,7 @@ export class AddTaskComponent implements OnInit {
 
 
   submitForm(): void {
-    console.log('Dados enviados:');
+    this.task.ready = true;
     this.close.emit();
   }
 }

@@ -5,9 +5,11 @@ export class Task {
   user: string = "";
   status: string = "";
   type: number = 1;
+  ready: boolean = false;
 
-  constructor(id: number, title: string) {
+  constructor(id: number, title: string, ready: boolean = false) {
     this.id = id;
     this.title = title;
+    this.ready = ready;
   }
 }

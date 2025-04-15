@@ -25,19 +25,21 @@
                 [cdkDropListData]="column.tasks"
                 (cdkDropListDropped)="drop($event)">
                 @if (index == 0) {
-                  <button class="btn btn-sm btn-outline-secondary btn-block mb-2" (click)="newTaskModal(newTask)">
+                  <button class="btn btn-sm btn-outline-secondary btn-block mb-2 w-100" (click)="newTaskModal(newTask)">
                     <fa-icon [icon]="faPlus"></fa-icon> Add Task
                   </button>
                   <hr />
                 }
                 @for(task of column.tasks; track $index; let ti = $index) {
-                  <div class="task" cdkDrag>
-                    <b>
-                      <fa-icon [icon]="faCalendar"></fa-icon>
-                      {{task.title}}
-                    </b><br />
-                    <span>{{task.description}}</span>
-                  </div>
+                  @if (task.ready) {
+                    <div class="task" cdkDrag>
+                      <b>
+                        <fa-icon [icon]="faCalendar"></fa-icon>
+                        {{task.title}}
+                      </b><br />
+                      <span>{{task.description}}</span>
+                    </div>
+                  }
                 }
             </div>
           </div>
