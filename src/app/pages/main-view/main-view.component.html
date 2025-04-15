@@ -42,12 +42,5 @@
 		<h4 class="modal-title" id="modal-basic-title">Edit Board</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
-	<div class="modal-body">
-		<h1>Edit Board</h1>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">
-      <fa-icon [icon]="faSave"></fa-icon> Save
-    </button>
-	</div>
+  <app-edit-board [board]="board" (close)="modal.dismiss('Cross click')" />
 </ng-template>

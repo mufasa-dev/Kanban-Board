@@ -1,0 +1,30 @@
+
+
+<div class="modal-body">
+  <b>Board Name:</b>
+  <input type="text" name="name" class="form-control form-control-sm" [(ngModel)]="board.name" required />
+
+  <b>Description:</b>
+  <textarea name="description" class="form-control form-control-sm" [(ngModel)]="board.description"></textarea>
+
+  <b>Columns</b>
+  <div name="columns">
+    @for (col of board.columns; track $index; let i = $index) {
+      <div class="d-flex pb-1">
+        <input type="text" class="form-control form-control-sm w-auto" placeholder="Títle" [(ngModel)]="col.name" />
+        <button type="button" class="btn btn-danger btn-sm" (click)="removeColumn(i)">
+          <fa-icon [icon]="faTrash"></fa-icon> Remove
+        </button>
+      </div>
+    }
+  </div>
+
+  <button type="button" class="btn btn-sm btn-primary" (click)="addColumn()">
+    <fa-icon [icon]="faPlus"></fa-icon> Add column
+  </button>
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-outline-secondary" (click)="submitForm()">
+    <fa-icon [icon]="faSave"></fa-icon> Save
+  </button>
+</div>

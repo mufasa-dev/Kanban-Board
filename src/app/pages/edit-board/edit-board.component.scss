@@ -1,0 +1,105 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav-kanban {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+
+.app-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-left: 1rem;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  min-height: 0;
+  .board-bar {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    .board-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
+  }
+
+  .board-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow: auto;
+    .board-columns {
+      display: flex;
+      flex-grow: 1;
+
+      .board-column {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 0;
+        min-width: 300px;
+        border: 3px solid white;
+        background-color: #f5f5f5;
+
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+
+        .column-title {
+          font-weight: bold;
+          font-family: 'Lato', sans-serif;
+          padding: 0.5rem 1rem;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+.tasks-container {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.task {
+  display: flex;
+  padding: 15px 12px;
+  background: white;
+  border-bottom: colid 1px #ddd;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,0.05),
+  0 3px 14px 2px rgba(0,0,0,0.05);
+  margin-bottom: 15px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
