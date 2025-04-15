@@ -4,13 +4,14 @@ import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faPencil, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCoffee, faPencil, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditBoardComponent } from '../edit-board/edit-board.component';
+import { AddTaskComponent } from "../add-task/add-task.component";
 
 @Component({
   selector: 'app-main-view',
-  imports: [ CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule, EditBoardComponent  ],
+  imports: [CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss'
 })
@@ -22,10 +23,13 @@ export class MainViewComponent implements OnInit {
   public faCoffee = faCoffee;
   public faPencil = faPencil;
   public faSave = faSave;
+  public faPlus = faPlus;
+  public faCalendar = faCalendar;
 
   constructor() {}
 
   public board: Board = new Board(1, "My Board", []);
+  public selectedTask: Task = new Task(0, '');
 
   ngOnInit(): void {
     this.board.columns.push(new Column("Idea", [
@@ -62,6 +66,14 @@ export class MainViewComponent implements OnInit {
 			},
 		);
 	}
+
+  newTaskModal(content: TemplateRef<any>, size: string = "xl") {
+    if(this.board.columns.length == 0) return;
+    let task = new Task(0, '');
+    this.board.columns[0].tasks.push(task);
+    this.selectedTask = task;
+    this.open(content, size)
+  }
 
 	private getDismissReason(reason: any): string {
 		switch (reason) {

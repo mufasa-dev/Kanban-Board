@@ -15,7 +15,7 @@
 
     <div class="board-wrapper">
       <div class="board-columns" cdkDropListGroup>
-        @for (column of board.columns; track $index) {
+        @for (column of board.columns; track $index; let index = $index) {
           <div class="board-column" >
             <div class="column-title">{{column.name}}</div>
 
@@ -24,9 +24,19 @@
                 #todoList="cdkDropList"
                 [cdkDropListData]="column.tasks"
                 (cdkDropListDropped)="drop($event)">
-                @for(task of column.tasks; track $index) {
+                @if (index == 0) {
+                  <button class="btn btn-sm btn-outline-secondary btn-block mb-2" (click)="newTaskModal(newTask)">
+                    <fa-icon [icon]="faPlus"></fa-icon> Add Task
+                  </button>
+                  <hr />
+                }
+                @for(task of column.tasks; track $index; let ti = $index) {
                   <div class="task" cdkDrag>
-                    {{task.title}}
+                    <b>
+                      <fa-icon [icon]="faCalendar"></fa-icon>
+                      {{task.title}}
+                    </b><br />
+                    <span>{{task.description}}</span>
                   </div>
                 }
             </div>
@@ -43,4 +53,13 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
   <app-edit-board [board]="board" (close)="modal.dismiss('Cross click')" />
+</ng-template>
+
+
+<ng-template #newTask let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">New Taks</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+  <app-add-task [task]="selectedTask" (close)="modal.dismiss('Cross click')" />
 </ng-template>

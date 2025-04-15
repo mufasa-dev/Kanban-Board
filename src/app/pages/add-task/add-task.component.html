@@ -1,0 +1,20 @@
+
+
+<div class="modal-body">
+  <b>Name:</b>
+  <input type="text" name="name" class="form-control form-control-sm" [(ngModel)]="task.title" required />
+
+  <b>Description:</b>
+  <textarea name="description" class="form-control form-control-sm" [(ngModel)]="task.description"></textarea>
+
+  <b>Type</b>
+  <select class="form-control form-control-sm" [(ngModel)]="task.type">
+    <option [value]="1">Task</option>
+    <option [value]="2">Bug</option>
+  </select>
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-outline-secondary" (click)="submitForm()">
+    <fa-icon [icon]="faSave"></fa-icon> Save
+  </button>
+</div>

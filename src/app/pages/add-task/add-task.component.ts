@@ -8,14 +8,14 @@ import { faCoffee, faPencil, faPlus, faSave, faTrash } from '@fortawesome/free-s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-board',
+  selector: 'app-add-task',
   imports: [ FontAwesomeModule, ReactiveFormsModule, FormsModule   ],
-  templateUrl: './edit-board.component.html',
-  styleUrl: './edit-board.component.scss'
+  templateUrl: './add-task.component.html',
+  styleUrl: './add-task.component.scss'
 })
-export class EditBoardComponent implements OnInit {
+export class AddTaskComponent implements OnInit {
 
-  @Input() public board: Board = new Board(1, '', []);
+  @Input() public task: Task = new Task(1, '');
   @Output() public close = new EventEmitter<any>();
 
   public faTrash = faTrash;
@@ -28,13 +28,6 @@ export class EditBoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addColumn(): void {
-    this.board.columns.push(new Column('', []));
-  }
-
-  removeColumn(index: number): void {
-    this.board.columns.splice(index, 1);
-  }
 
   submitForm(): void {
     console.log('Dados enviados:');
