@@ -32,13 +32,8 @@ export class MainViewComponent implements OnInit {
   public selectedTask: Task = new Task(0, '');
 
   ngOnInit(): void {
-    this.board.columns.push(new Column("Idea", [
-      new Task(0, "Some Idea", true),
-      new Task(1, "Another Idea", true)
-    ]));
-    this.board.columns.push(new Column("Research", [
-      new Task(0, "Some reserch", true),
-    ]));
+    this.board.columns.push(new Column("Idea", []));
+    this.board.columns.push(new Column("Research", []));
     this.board.columns.push(new Column("Todo", []));
     this.board.columns.push(new Column("Done", []));
   }
