@@ -4,8 +4,9 @@ import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faPencil, faPlus, faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCoffee, faPencil, faPlus, faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SubTask } from '../../models/sub-task.model';
 
 @Component({
   selector: 'app-add-task',
@@ -21,6 +22,8 @@ export class AddTaskComponent implements OnInit {
   public faTrash = faTrash;
   public faPlus = faPlus;
   public faSave = faSave;
+  public faPencil = faPencil;
+  public faCheck = faCheck;
 
   constructor() {
   }
@@ -28,6 +31,25 @@ export class AddTaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addSubTask() {
+    let sub = new SubTask("");
+    sub.edit = true;
+    this.task.subTasks.push(sub);
+  }
+
+  removeSubTask(index: number): void {
+    this.task.subTasks.splice(index, 1);
+  }
+
+  hasSubTasks() {
+    return this.task.subTasks.length > 0;
+  }
+
+  getCheckedPercentage(): number {
+    if (this.task.subTasks.length == 0) return 100;
+    const checkedTasks = this.task.subTasks.filter(task => task.checked).length;
+    return (checkedTasks / this.task.subTasks.length) * 100;
+  }
 
   submitForm(): void {
     this.task.ready = true;
