@@ -4,14 +4,15 @@ import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheck, faCoffee, faPencil, faPlus, faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faCalendar, faCheck, faClose, faCoffee, faPencil, faPlus, faSave, faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubTask } from '../../models/sub-task.model';
 import { TaskTypeEnum } from '../../models/enum/task.enum';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
-  imports: [ FontAwesomeModule, ReactiveFormsModule, FormsModule   ],
+  imports: [ CommonModule, FontAwesomeModule, ReactiveFormsModule, FormsModule   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
@@ -25,6 +26,9 @@ export class AddTaskComponent implements OnInit {
   public faSave = faSave;
   public faPencil = faPencil;
   public faCheck = faCheck;
+  public faClose = faClose;
+  public faCalendar = faCalendar;
+  public faBug = faBug;
 
   public enumTaskType = TaskTypeEnum;
 
@@ -46,6 +50,16 @@ export class AddTaskComponent implements OnInit {
 
   hasSubTasks() {
     return this.task.subTasks.length > 0;
+  }
+
+  getIconType(type: number):IconDefinition {
+    switch(Number(type)) {
+      case this.enumTaskType.bug:
+        return this.faBug;
+        break;
+      default:
+        return this.faCalendar;
+    }
   }
 
   getCheckedPercentage(): number {

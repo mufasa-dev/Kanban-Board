@@ -1,6 +1,10 @@
-
-
-<div class="modal-body">
+<div class="modal-header py-2">
+  <h5 class="modal-title" id="modal-basic-title">
+    <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon> New Task
+  </h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close.emit()"></button>
+</div>
+<div class="modal-body" [ngClass]="'task-type-'+task.type">
   <div class="row">
     <div class="col-md-8">
       <b>Name:</b>
@@ -28,21 +32,21 @@
     </div>
   }
   @for(sub of task.subTasks; track $index; let i = $index) {
-    <div class="d-flex">
+    <div class="d-flex mb-2">
       @if (task.ready && !sub.edit) {
         <input type="checkbox" [(ngModel)]="sub.checked" />
       }
       @if (sub.edit) {
         <input type="text" [(ngModel)]="sub.title" class="form-control form-control-sm w-auto" />
-        <button class="btn btn-sm btn-success ml-2" (click)="sub.edit = false">
+        <button class="btn btn-sm btn-success ms-2" (click)="sub.edit = false">
           <fa-icon [icon]="faCheck"></fa-icon>
         </button>
       } @else {
         <b class="p-1">{{sub.title}}</b>
-        <button class="btn btn-sm btn-primary ml-2" (click)="sub.edit = true">
+        <button class="btn btn-sm btn-primary ms-2" (click)="sub.edit = true">
           <fa-icon [icon]="faPencil"></fa-icon>
         </button>
-        <button class="btn btn-sm btn-danger ml-2" (click)="removeSubTask(i)">
+        <button class="btn btn-sm btn-danger ms-2" (click)="removeSubTask(i)">
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       }

@@ -50,18 +50,9 @@
 </div>
 
 <ng-template #editBoard let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Edit Board</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
   <app-edit-board [board]="board" (close)="modal.dismiss('Cross click')" />
 </ng-template>
 
-
 <ng-template #newTask let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">New Taks</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
   <app-add-task [task]="selectedTask" (close)="modal.dismiss('Cross click')" />
 </ng-template>

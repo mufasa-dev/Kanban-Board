@@ -1,0 +1,9 @@
+::ng-deep .modal-content:has(.task-type-1) {
+  border-left: 10px solid var(--primary-color);
+  border-radius: 0;
+}
+
+::ng-deep .modal-content:has(.task-type-2) {
+  border-left: 10px solid var(--danger-color);
+  border-radius: 0;
+}

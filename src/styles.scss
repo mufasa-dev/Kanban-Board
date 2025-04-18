@@ -7,3 +7,10 @@ html, body {
 .color-primary {
   color: var(--primary-color) !important;
 }
+
+.task-icon-1 {
+  color: var(--primary-color);
+}
+.task-icon-2 {
+  color: var(--danger-color);
+}

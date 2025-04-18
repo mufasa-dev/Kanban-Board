@@ -1,4 +1,7 @@
-
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Edit Board</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close.emit()"></button>
+</div>
 
 <div class="modal-body">
   <b>Board Name:</b>
@@ -12,7 +15,7 @@
     @for (col of board.columns; track $index; let i = $index) {
       <div class="d-flex pb-1">
         <input type="text" class="form-control form-control-sm w-auto" placeholder="Títle" [(ngModel)]="col.name" />
-        <button type="button" class="btn btn-danger btn-sm" (click)="removeColumn(i)">
+        <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeColumn(i)">
           <fa-icon [icon]="faTrash"></fa-icon> Remove
         </button>
       </div>
