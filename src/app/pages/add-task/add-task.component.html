@@ -1,17 +1,22 @@
 
 
 <div class="modal-body">
-  <b>Name:</b>
-  <input type="text" name="name" class="form-control form-control-sm" [(ngModel)]="task.title" required />
+  <div class="row">
+    <div class="col-md-8">
+      <b>Name:</b>
+      <input type="text" name="name" class="form-control form-control-sm" [(ngModel)]="task.title" required />
+    </div>
+    <div class="col-md-4">
+      <b>Type</b>
+      <select class="form-control form-control-sm" [(ngModel)]="task.type">
+        <option [value]="enumTaskType.task">Task</option>
+        <option [value]="enumTaskType.bug">Bug</option>
+      </select>
+    </div>
+  </div>
 
   <b>Description:</b>
   <textarea name="description" class="form-control form-control-sm" [(ngModel)]="task.description"></textarea>
-
-  <b>Type</b>
-  <select class="form-control form-control-sm" [(ngModel)]="task.type">
-    <option [value]="1">Task</option>
-    <option [value]="2">Bug</option>
-  </select>
 
   <b>CheckList</b>
   <hr />

@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheck, faCoffee, faPencil, faPlus, faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubTask } from '../../models/sub-task.model';
+import { TaskTypeEnum } from '../../models/enum/task.enum';
 
 @Component({
   selector: 'app-add-task',
@@ -24,6 +25,8 @@ export class AddTaskComponent implements OnInit {
   public faSave = faSave;
   public faPencil = faPencil;
   public faCheck = faCheck;
+
+  public enumTaskType = TaskTypeEnum;
 
   constructor() {
   }

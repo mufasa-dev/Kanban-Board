@@ -34,7 +34,7 @@
                   @if (task.ready) {
                     <div class="task" cdkDrag>
                       <b>
-                        <fa-icon [icon]="faCalendar"></fa-icon>
+                        <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
                         {{task.title}}
                       </b><br />
                       <span>{{task.description}}</span>

@@ -4,14 +4,16 @@ import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCalendar, faCoffee, faPencil, faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faC, faCalendar, faCoffee, faPencil, faPlus, faSave, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditBoardComponent } from '../edit-board/edit-board.component';
 import { AddTaskComponent } from "../add-task/add-task.component";
+import { TaskTypeEnum } from '../../models/enum/task.enum';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-view',
-  imports: [CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent],
+  imports: [CommonModule,CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss'
 })
@@ -25,6 +27,9 @@ export class MainViewComponent implements OnInit {
   public faSave = faSave;
   public faPlus = faPlus;
   public faCalendar = faCalendar;
+  public faBug = faBug;
+
+  public enumTaskType = TaskTypeEnum;
 
   constructor() {}
 
@@ -48,6 +53,16 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
+    }
+  }
+
+  getIconType(type: number):IconDefinition {
+    switch(Number(type)) {
+      case this.enumTaskType.bug:
+        return this.faBug;
+        break;
+      default:
+        return this.faCalendar;
     }
   }
 
