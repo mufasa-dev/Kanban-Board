@@ -1,6 +1,7 @@
 <div class="modal-header py-2">
   <h5 class="modal-title" id="modal-basic-title">
-    <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon> New Task
+    <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
+    {{ task.ready ? 'Edit Tak' : 'New Task' }}
   </h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="close.emit()"></button>
 </div>
@@ -22,34 +23,27 @@
   <b>Description:</b>
   <textarea name="description" class="form-control form-control-sm" [(ngModel)]="task.description"></textarea>
 
-  <b>CheckList</b>
+  <b class="mt-1">CheckList</b>
   <hr />
   @if (hasSubTasks() && task.ready) {
     <div class="progress">
       <div class="progress-bar" role="progressbar" [style.width.%]="getCheckedPercentage()" aria-valuenow="getCheckedPercentage()" aria-valuemin="0" aria-valuemax="100">
-        {{ getCheckedPercentage() }}%
+        {{ getCheckedPercentage() | number: '1.0-2' }}%
       </div>
     </div>
   }
   @for(sub of task.subTasks; track $index; let i = $index) {
-    <div class="d-flex mb-2">
-      @if (task.ready && !sub.edit) {
-        <input type="checkbox" [(ngModel)]="sub.checked" />
+    <div class="d-flex my-1">
+      @if (task.ready) {
+        <div class="form-check">
+          <input [id]="'check-sub-task' + i" class="form-check-input" type="checkbox" [(ngModel)]="sub.checked" />
+          <label [for]="'check-sub-task' + i" class="form-check-label"></label>
+        </div>
       }
-      @if (sub.edit) {
-        <input type="text" [(ngModel)]="sub.title" class="form-control form-control-sm w-auto" />
-        <button class="btn btn-sm btn-success ms-2" (click)="sub.edit = false">
-          <fa-icon [icon]="faCheck"></fa-icon>
-        </button>
-      } @else {
-        <b class="p-1">{{sub.title}}</b>
-        <button class="btn btn-sm btn-primary ms-2" (click)="sub.edit = true">
-          <fa-icon [icon]="faPencil"></fa-icon>
-        </button>
-        <button class="btn btn-sm btn-danger ms-2" (click)="removeSubTask(i)">
-          <fa-icon [icon]="faTrash"></fa-icon>
-        </button>
-      }
+      <input type="text" [(ngModel)]="sub.title" class="form-control form-control-sm w-auto" />
+      <button class="btn btn-sm btn-danger ms-2" (click)="removeSubTask(i)">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
     </div>
   }
   <button class="btn btn-sm btn-primary mt-2" (click)="addSubTask()">

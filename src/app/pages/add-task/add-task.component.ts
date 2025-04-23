@@ -40,7 +40,6 @@ export class AddTaskComponent implements OnInit {
 
   addSubTask() {
     let sub = new SubTask("");
-    sub.edit = true;
     this.task.subTasks.push(sub);
   }
 
