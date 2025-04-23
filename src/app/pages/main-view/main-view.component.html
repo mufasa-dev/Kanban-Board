@@ -13,38 +13,7 @@
       </button>
     </div>
 
-    <div class="board-wrapper">
-      <div class="board-columns" cdkDropListGroup>
-        @for (column of board.columns; track $index; let index = $index) {
-          <div class="board-column" >
-            <div class="column-title">{{column.name}}</div>
-
-            <div class="tasks-container"
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="column.tasks"
-                (cdkDropListDropped)="drop($event)">
-                @if (index == 0) {
-                  <button class="btn btn-sm btn-outline-secondary btn-block mb-2 w-100" (click)="newTaskModal(newTask)">
-                    <fa-icon [icon]="faPlus"></fa-icon> Add Task
-                  </button>
-                }
-                @for(task of column.tasks; track $index; let ti = $index) {
-                  @if (task.ready) {
-                    <div class="task" cdkDrag>
-                      <b class="task-title" (click)="openTaskModal(newTask, task)">
-                        <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
-                        {{task.title}}
-                      </b><br />
-                      <span>{{task.description}}</span>
-                    </div>
-                  }
-                }
-            </div>
-          </div>
-        }
-      </div>
-    </div>
+    <app-kanban-view [columns]="board.columns" (newTask)="newTaskModal(newTask)" (openTask)="openTaskModal(newTask, $event)"></app-kanban-view>
   </div>
 </div>
 

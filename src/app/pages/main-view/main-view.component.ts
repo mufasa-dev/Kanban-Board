@@ -10,10 +10,11 @@ import { EditBoardComponent } from '../edit-board/edit-board.component';
 import { AddTaskComponent } from "../add-task/add-task.component";
 import { TaskTypeEnum } from '../../models/enum/task.enum';
 import { CommonModule } from '@angular/common';
+import { KanbanViewComponent } from '../kanban-view/kanban-view.component';
 
 @Component({
   selector: 'app-main-view',
-  imports: [CommonModule,CdkDrag, CdkDropList, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent],
+  imports: [CommonModule, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent, KanbanViewComponent],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss'
 })
@@ -41,29 +42,6 @@ export class MainViewComponent implements OnInit {
     this.board.columns.push(new Column("Research", []));
     this.board.columns.push(new Column("Todo", []));
     this.board.columns.push(new Column("Done", []));
-  }
-
-  drop(event: CdkDragDrop<Task[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
-
-  getIconType(type: number):IconDefinition {
-    switch(Number(type)) {
-      case this.enumTaskType.bug:
-        return this.faBug;
-        break;
-      default:
-        return this.faCalendar;
-    }
   }
 
   open(content: TemplateRef<any>, size: string = "xl") {
