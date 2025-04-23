@@ -21,7 +21,12 @@
                     <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
                     {{task.title}}
                   </b><br />
-                  <span>{{task.description}}</span>
+                  <span class="d-block">{{task.description}}</span>
+                  @if (task.subTasks.length > 0) {
+                    <b class="d-inline text-warning">
+                      <fa-icon [icon]="faPenToSquare" /> {{ getCheckedSubTaksLength(task.subTasks) }} / {{task.subTasks.length}}
+                    </b>
+                  }
                 </div>
               }
             }

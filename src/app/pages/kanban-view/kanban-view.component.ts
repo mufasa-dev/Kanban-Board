@@ -4,12 +4,13 @@ import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBug, faC, faCalendar, faCoffee, faPencil, faPlus, faSave, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faC, faCalendar, faCoffee, faPencil, faPenToSquare, faPlus, faSave, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditBoardComponent } from '../edit-board/edit-board.component';
 import { AddTaskComponent } from "../add-task/add-task.component";
 import { TaskTypeEnum } from '../../models/enum/task.enum';
 import { CommonModule } from '@angular/common';
+import { SubTask } from '../../models/sub-task.model';
 
 @Component({
   selector: 'app-kanban-view',
@@ -31,6 +32,7 @@ export class KanbanViewComponent {
   public faPlus = faPlus;
   public faCalendar = faCalendar;
   public faBug = faBug;
+  public faPenToSquare = faPenToSquare;
 
   public enumTaskType = TaskTypeEnum;
 
@@ -59,6 +61,10 @@ export class KanbanViewComponent {
 
   getTasks(col: number) {
     return this.tasks.filter(x => x.column == col);
+  }
+
+  getCheckedSubTaksLength(tasks: SubTask[]): number {
+    return tasks.filter(x => x.checked == true).length;
   }
 
 }
