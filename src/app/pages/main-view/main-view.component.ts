@@ -85,6 +85,12 @@ export class MainViewComponent implements OnInit {
     this.open(content, size)
   }
 
+  openTaskModal(content: TemplateRef<any>, task: Task, size: string = "xl") {
+    if(this.board.columns.length == 0) return;
+    this.selectedTask = task;
+    this.open(content, size);
+  }
+
 	private getDismissReason(reason: any): string {
 		switch (reason) {
 			case ModalDismissReasons.ESC:

@@ -28,12 +28,11 @@
                   <button class="btn btn-sm btn-outline-secondary btn-block mb-2 w-100" (click)="newTaskModal(newTask)">
                     <fa-icon [icon]="faPlus"></fa-icon> Add Task
                   </button>
-                  <hr />
                 }
                 @for(task of column.tasks; track $index; let ti = $index) {
                   @if (task.ready) {
                     <div class="task" cdkDrag>
-                      <b>
+                      <b class="task-title" (click)="openTaskModal(newTask, task)">
                         <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
                         {{task.title}}
                       </b><br />

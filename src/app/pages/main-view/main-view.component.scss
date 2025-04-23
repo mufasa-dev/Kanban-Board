@@ -87,6 +87,12 @@
   &:has(.task-icon-2) {
     border-left: 5px solid var(--danger-color);
   }
+  .task-title {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .cdk-drag-preview {
