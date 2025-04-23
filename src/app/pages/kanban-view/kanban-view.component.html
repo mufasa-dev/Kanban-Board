@@ -7,16 +7,16 @@
         <div class="tasks-container"
             cdkDropList
             #todoList="cdkDropList"
-            [cdkDropListData]="column.tasks"
-            (cdkDropListDropped)="drop($event)">
+            [cdkDropListData]="getTasks(index)"
+            (cdkDropListDropped)="drop($event, index)">
             @if (index == 0) {
               <button class="btn btn-sm btn-outline-secondary btn-block mb-2 w-100" (click)="newTask.emit()">
                 <fa-icon [icon]="faPlus"></fa-icon> Add Task
               </button>
             }
-            @for(task of column.tasks; track $index; let ti = $index) {
+            @for(task of getTasks(index); track $index; let ti = $index) {
               @if (task.ready) {
-                <div class="task" cdkDrag>
+                <div class="task" cdkDrag [cdkDragData]="task">
                   <b class="task-title" (click)="openTask.emit(task)">
                     <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
                     {{task.title}}

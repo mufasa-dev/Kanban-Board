@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class KanbanViewComponent {
 
   @Input() public columns: Column[] = [];
+  @Input() public tasks: Task[] = []
 
   public newTask = output<void>();
   public openTask = output<Task>();
@@ -35,16 +36,14 @@ export class KanbanViewComponent {
 
   constructor() {}
 
-  drop(event: CdkDragDrop<Task[]>) {
+  drop(event: CdkDragDrop<Task[]>, newIndex: number) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+      let item = event.item.data;
+      const task = this.tasks.find(x => x.id == item.id);
+      if (task) task.column = newIndex;
+      console.log(this.tasks)
     }
   }
 
@@ -56,6 +55,10 @@ export class KanbanViewComponent {
       default:
         return this.faCalendar;
     }
+  }
+
+  getTasks(col: number) {
+    return this.tasks.filter(x => x.column == col);
   }
 
 }

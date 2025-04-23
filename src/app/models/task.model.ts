@@ -6,6 +6,7 @@ export class Task {
   description: string = "";
   user: string = "";
   status: string = "";
+  column: number = 0;
   type: number = 1;
   subTasks: SubTask[] = [];
   ready: boolean = false;

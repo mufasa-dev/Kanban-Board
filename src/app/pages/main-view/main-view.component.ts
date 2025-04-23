@@ -35,13 +35,14 @@ export class MainViewComponent implements OnInit {
   constructor() {}
 
   public board: Board = new Board(1, "My Board", []);
+  public tasks: Task[] = [];
   public selectedTask: Task = new Task(0, '');
 
   ngOnInit(): void {
-    this.board.columns.push(new Column("Idea", []));
-    this.board.columns.push(new Column("Research", []));
-    this.board.columns.push(new Column("Todo", []));
-    this.board.columns.push(new Column("Done", []));
+    this.board.columns.push(new Column("Idea"));
+    this.board.columns.push(new Column("Research"));
+    this.board.columns.push(new Column("Todo"));
+    this.board.columns.push(new Column("Done"));
   }
 
   open(content: TemplateRef<any>, size: string = "xl") {
@@ -57,8 +58,12 @@ export class MainViewComponent implements OnInit {
 
   newTaskModal(content: TemplateRef<any>, size: string = "xl") {
     if(this.board.columns.length == 0) return;
+
     let task = new Task(0, '');
-    this.board.columns[0].tasks.push(task);
+    let maxId = this.tasks.reduce((max, task) => Math.max(max, task.id), 0);
+    task.id = maxId + 1;
+
+    this.tasks.push(task);
     this.selectedTask = task;
     this.open(content, size)
   }

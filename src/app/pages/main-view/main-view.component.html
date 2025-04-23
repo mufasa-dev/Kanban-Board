@@ -13,7 +13,11 @@
       </button>
     </div>
 
-    <app-kanban-view [columns]="board.columns" (newTask)="newTaskModal(newTask)" (openTask)="openTaskModal(newTask, $event)"></app-kanban-view>
+    <app-kanban-view [columns]="board.columns"
+            [tasks]="tasks"
+            (newTask)="newTaskModal(newTask)"
+            (openTask)="openTaskModal(newTask, $event)">
+    </app-kanban-view>
   </div>
 </div>
 

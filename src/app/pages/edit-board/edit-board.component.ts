@@ -29,7 +29,7 @@ export class EditBoardComponent implements OnInit {
   }
 
   addColumn(): void {
-    this.board.columns.push(new Column('', []));
+    this.board.columns.push(new Column(''));
   }
 
   removeColumn(index: number): void {
