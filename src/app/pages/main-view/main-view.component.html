@@ -11,13 +11,24 @@
       <button class="btn btn-sm color-primary" (click)="open(editBoard)">
         <fa-icon [icon]="faPencil"></fa-icon>
       </button>
+      <button class="btn btn-sm ms-auto" (click)="tableView = !tableView">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </button>
     </div>
 
-    <app-kanban-view [columns]="board.columns"
+    @if(tableView) {
+      <app-table-view [columns]="board.columns"
             [tasks]="tasks"
             (newTask)="newTaskModal(newTask)"
             (openTask)="openTaskModal(newTask, $event)">
-    </app-kanban-view>
+      </app-table-view>
+    } @else {
+      <app-kanban-view [columns]="board.columns"
+              [tasks]="tasks"
+              (newTask)="newTaskModal(newTask)"
+              (openTask)="openTaskModal(newTask, $event)">
+      </app-kanban-view>
+    }
   </div>
 </div>
 

@@ -1,0 +1,39 @@
+<div class="p-2">
+  <div class="d-flex">
+    <button class="btn btn-sm btn-outline-secondary mb-2" (click)="newTask.emit()">
+      <fa-icon [icon]="faPlus"></fa-icon> Add Task
+    </button>
+  </div>
+  <table class="table table-responsive table-sm">
+    <thead>
+      <tr>
+        <th [width]="20"></th>
+        <th [width]="100">Task</th>
+        <th [width]="50">Status</th>
+        <th>Description</th>
+        <th [width]="100">CheckList</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (task of tasks; track $index) {
+        <tr>
+          <td>
+            <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
+          </td>
+          <td>
+            <b class="task-name" (click)="openTask.emit(task)">{{task.title}}</b>
+          </td>
+          <td>{{getColName(task.column)}}</td>
+          <td>{{task.description}}</td>
+          <td>
+            @if (task.subTasks.length > 0) {
+              <div class="d-inline">
+                <fa-icon [icon]="faPenToSquare" /> {{ getCheckedSubTaksLength(task.subTasks) }} / {{task.subTasks.length}}
+              </div>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

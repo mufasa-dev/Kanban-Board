@@ -26,7 +26,7 @@
   <b class="mt-1">CheckList</b>
   <hr />
   @if (hasSubTasks() && task.ready) {
-    <div class="progress">
+    <div class="progress mb-2">
       <div class="progress-bar" role="progressbar" [style.width.%]="getCheckedPercentage()" aria-valuenow="getCheckedPercentage()" aria-valuemin="0" aria-valuemax="100">
         {{ getCheckedPercentage() | number: '1.0-2' }}%
       </div>

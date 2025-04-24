@@ -1,0 +1,6 @@
+.task-name {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
