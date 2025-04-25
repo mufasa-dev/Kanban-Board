@@ -22,6 +22,7 @@ export class AddTaskComponent implements OnInit {
 
   public close = output<void>();
   public saveTasks = output<void>();
+  public removeTask = output<number>();
 
   public faTrash = faTrash;
   public faPlus = faPlus;
@@ -72,6 +73,11 @@ export class AddTaskComponent implements OnInit {
   submitForm(): void {
     this.task.ready = true;
     this.saveTasks.emit();
+    this.close.emit();
+  }
+
+  removeTaksById() {
+    this.removeTask.emit(this.task.id);
     this.close.emit();
   }
 }

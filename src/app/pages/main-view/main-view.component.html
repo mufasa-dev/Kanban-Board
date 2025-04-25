@@ -38,5 +38,9 @@
 </ng-template>
 
 <ng-template #newTask let-modal>
-  <app-add-task [task]="selectedTask" (close)="modal.dismiss('Cross click')" (saveTasks)="saveTasks()" />
+  <app-add-task [task]="selectedTask"
+                (close)="modal.dismiss('Cross click')"
+                (saveTasks)="saveTasks()"
+                (removeTask)="removeTask($event)"
+  />
 </ng-template>

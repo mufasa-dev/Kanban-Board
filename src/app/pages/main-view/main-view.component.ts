@@ -59,6 +59,11 @@ export class MainViewComponent implements OnInit {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
+  removeTask(id: number) {
+    this.tasks = this.tasks.filter(x => x.id != id);
+    this.saveTasks();
+  }
+
   open(content: TemplateRef<any>, size: string = "xl") {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: size, centered: true }).result.then(
 			(result) => {

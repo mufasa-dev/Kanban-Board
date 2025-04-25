@@ -50,6 +50,11 @@
   </button>
 </div>
 <div class="modal-footer">
+  @if (task.ready) {
+    <button class="btn btn-outline-danger" (click)="removeTaksById()">
+      <fa-icon [icon]="faTrash"></fa-icon> Remove
+    </button>
+  }
   <button type="submit" class="btn btn-outline-secondary" (click)="submitForm()">
     <fa-icon [icon]="faSave"></fa-icon> Save
   </button>
