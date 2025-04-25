@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, Output, signal, TemplateRef, WritableSignal, EventEmitter } from '@angular/core';
+import { Component, inject, Input, OnInit, Output, signal, TemplateRef, WritableSignal, EventEmitter, output } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
 import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
@@ -19,7 +19,9 @@ import { CommonModule } from '@angular/common';
 export class AddTaskComponent implements OnInit {
 
   @Input() public task: Task = new Task(1, '');
-  @Output() public close = new EventEmitter<any>();
+
+  public close = output<void>();
+  public saveTasks = output<void>();
 
   public faTrash = faTrash;
   public faPlus = faPlus;
@@ -69,6 +71,7 @@ export class AddTaskComponent implements OnInit {
 
   submitForm(): void {
     this.task.ready = true;
+    this.saveTasks.emit();
     this.close.emit();
   }
 }

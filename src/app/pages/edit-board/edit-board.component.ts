@@ -37,7 +37,7 @@ export class EditBoardComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log('Dados enviados:');
+    localStorage.setItem("board", JSON.stringify(this.board))
     this.close.emit();
   }
 }

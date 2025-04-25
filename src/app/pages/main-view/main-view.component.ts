@@ -41,10 +41,22 @@ export class MainViewComponent implements OnInit {
   public selectedTask: Task = new Task(0, '');
 
   ngOnInit(): void {
-    this.board.columns.push(new Column("Idea"));
-    this.board.columns.push(new Column("Research"));
-    this.board.columns.push(new Column("Todo"));
-    this.board.columns.push(new Column("Done"));
+    let board = JSON.parse(localStorage.getItem("board") || 'null');
+    let tasks = JSON.parse(localStorage.getItem("tasks") || '[]');
+    this.tasks = tasks;
+    if (board != null) {
+      this.board = board;
+    } else {
+      this.board.columns.push(new Column("Idea"));
+      this.board.columns.push(new Column("Research"));
+      this.board.columns.push(new Column("Todo"));
+      this.board.columns.push(new Column("Done"));
+      localStorage.setItem("board", JSON.stringify(this.board));
+    }
+  }
+
+  saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
   open(content: TemplateRef<any>, size: string = "xl") {

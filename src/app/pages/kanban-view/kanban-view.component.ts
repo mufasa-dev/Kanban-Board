@@ -17,10 +17,11 @@ import { SubTask } from '../../models/sub-task.model';
 export class KanbanViewComponent {
 
   @Input() public columns: Column[] = [];
-  @Input() public tasks: Task[] = []
+  @Input() public tasks: Task[] = [];
 
   public newTask = output<void>();
   public openTask = output<Task>();
+  public saveTasks = output<void>();
 
   public faCoffee = faCoffee;
   public faPencil = faPencil;
@@ -41,7 +42,7 @@ export class KanbanViewComponent {
       let item = event.item.data;
       const task = this.tasks.find(x => x.id == item.id);
       if (task) task.column = newIndex;
-      console.log(this.tasks)
+      this.saveTasks.emit();
     }
   }
 

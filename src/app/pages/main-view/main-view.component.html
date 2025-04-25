@@ -25,6 +25,7 @@
     } @else {
       <app-kanban-view [columns]="board.columns"
               [tasks]="tasks"
+              (saveTasks)="saveTasks()"
               (newTask)="newTaskModal(newTask)"
               (openTask)="openTaskModal(newTask, $event)">
       </app-kanban-view>
@@ -37,5 +38,5 @@
 </ng-template>
 
 <ng-template #newTask let-modal>
-  <app-add-task [task]="selectedTask" (close)="modal.dismiss('Cross click')" />
+  <app-add-task [task]="selectedTask" (close)="modal.dismiss('Cross click')" (saveTasks)="saveTasks()" />
 </ng-template>
