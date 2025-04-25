@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal, TemplateRef, WritableSignal } from '@angular/core';
-import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
 import { Board } from '../../models/board.model';
 import { Column } from '../../models/column.model';
 import { Task } from '../../models/task.model';
@@ -15,7 +14,7 @@ import { TableViewComponent } from '../table-view/table-view.component';
 
 @Component({
   selector: 'app-main-view',
-  imports: [CommonModule, CdkDropListGroup, FontAwesomeModule, EditBoardComponent, AddTaskComponent, KanbanViewComponent, TableViewComponent],
+  imports: [CommonModule, FontAwesomeModule, EditBoardComponent, AddTaskComponent, KanbanViewComponent, TableViewComponent],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss'
 })
