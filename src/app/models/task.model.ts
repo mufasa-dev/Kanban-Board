@@ -8,6 +8,7 @@ export class Task {
   status: string = "";
   column: number = 0;
   type: number = 1;
+  priority: number = 3;
   subTasks: SubTask[] = [];
   ready: boolean = false;
 

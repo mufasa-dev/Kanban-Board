@@ -2,7 +2,7 @@
   <div class="board-columns" cdkDropListGroup>
     @for (column of columns; track $index; let index = $index) {
       <div class="board-column" >
-        <div class="column-title">{{column.name}}</div>
+        <div class="column-title">{{column.name}} ({{getTasks(index).length}})</div>
 
         <div class="tasks-container"
             cdkDropList
@@ -17,10 +17,11 @@
             @for(task of getTasks(index); track $index; let ti = $index) {
               @if (task.ready) {
                 <div class="task" cdkDrag [cdkDragData]="task">
-                  <b class="task-title" (click)="openTask.emit(task)">
+                  <div class="task-title" (click)="openTask.emit(task)">
                     <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
-                    {{task.title}}
-                  </b><br />
+                    <b class="ms-1">{{task.title}}</b>
+                    <div class="ms-auto" [ngClass]="'priority-'+task.priority">{{getPriorityName(task.priority)}}</div>
+                  </div>
                   <span class="d-block">{{task.description}}</span>
                   @if (task.subTasks.length > 0) {
                     <b class="d-inline text-warning">

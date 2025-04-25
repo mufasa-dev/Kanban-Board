@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubTask } from '../../models/sub-task.model';
 import { TaskTypeEnum } from '../../models/enum/task.enum';
 import { CommonModule } from '@angular/common';
+import { PriorityEnum } from '../../models/enum/priority.enum';
 
 @Component({
   selector: 'app-add-task',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class AddTaskComponent implements OnInit {
 
   @Input() public task: Task = new Task(1, '');
+  @Input() public columns: Column[] = [];
 
   public close = output<void>();
   public saveTasks = output<void>();
@@ -34,6 +36,7 @@ export class AddTaskComponent implements OnInit {
   public faBug = faBug;
 
   public enumTaskType = TaskTypeEnum;
+  public priorityEnum = PriorityEnum;
 
   constructor() {
   }
@@ -74,6 +77,11 @@ export class AddTaskComponent implements OnInit {
     this.task.ready = true;
     this.saveTasks.emit();
     this.close.emit();
+  }
+
+  closeThisModal() {
+    this.close.emit();
+    if (!this.task.ready) this.removeTaksById()
   }
 
   removeTaksById() {

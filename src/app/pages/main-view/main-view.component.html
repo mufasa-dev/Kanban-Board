@@ -39,6 +39,7 @@
 
 <ng-template #newTask let-modal>
   <app-add-task [task]="selectedTask"
+                [columns]="board.columns"
                 (close)="modal.dismiss('Cross click')"
                 (saveTasks)="saveTasks()"
                 (removeTask)="removeTask($event)"

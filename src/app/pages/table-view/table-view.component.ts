@@ -11,6 +11,7 @@ import { AddTaskComponent } from "../add-task/add-task.component";
 import { TaskTypeEnum } from '../../models/enum/task.enum';
 import { CommonModule } from '@angular/common';
 import { SubTask } from '../../models/sub-task.model';
+import { PriorityEnum } from '../../models/enum/priority.enum';
 
 @Component({
   selector: 'app-table-view',
@@ -35,6 +36,7 @@ export class TableViewComponent {
   public faPenToSquare = faPenToSquare;
 
   public enumTaskType = TaskTypeEnum;
+  public priorityEnum = PriorityEnum;
 
   constructor() {}
 
@@ -58,5 +60,16 @@ export class TableViewComponent {
 
   getColName(index: number):string {
     return this.columns[index].name
+  }
+
+  getPriorityName(id: number): string {
+    switch(Number(id)) {
+      case this.priorityEnum.high:
+        return 'High';
+      case this.priorityEnum.medium:
+        return 'Medium';
+      default:
+        return 'Low';
+    }
   }
 }

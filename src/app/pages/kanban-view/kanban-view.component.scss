@@ -50,6 +50,7 @@
   }
   .task-title {
     cursor: pointer;
+    display: flex;
     &:hover {
       text-decoration: underline;
     }

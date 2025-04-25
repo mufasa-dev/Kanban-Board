@@ -3,7 +3,7 @@
     <fa-icon [icon]="getIconType(task.type)" [ngClass]="'task-icon-' + task.type"></fa-icon>
     {{ task.ready ? 'Edit Tak' : 'New Task' }}
   </h5>
-  <button type="button" class="btn-close" aria-label="Close" (click)="close.emit()"></button>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeThisModal()"></button>
 </div>
 <div class="modal-body" [ngClass]="'task-type-'+task.type">
   <div class="row">
@@ -14,8 +14,27 @@
     <div class="col-md-4">
       <b>Type</b>
       <select class="form-control form-control-sm" [(ngModel)]="task.type">
-        <option [value]="enumTaskType.task">Task</option>
-        <option [value]="enumTaskType.bug">Bug</option>
+        <option [ngValue]="enumTaskType.task">Task</option>
+        <option [ngValue]="enumTaskType.bug">Bug</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <b>Status:</b>
+      <select class="form-control form-control-sm" [(ngModel)]="task.column" [disabled]="!task.ready">
+        @for (col of columns; track $index; let i = $index) {
+          <option [ngValue]="i">{{col.name}}</option>
+        }
+      </select>
+    </div>
+    <div class="col-md-4">
+      <b>Priority</b>
+      <select class="form-control form-control-sm" [(ngModel)]="task.priority">
+        <option [ngValue]="priorityEnum.low">Low</option>
+        <option [ngValue]="priorityEnum.medium">Medium</option>
+        <option [ngValue]="priorityEnum.high">High</option>
       </select>
     </div>
   </div>
