@@ -4,7 +4,7 @@
       <fa-icon [icon]="faPlus"></fa-icon> Add Task
     </button>
   </div>
-  <table class="table table-responsive table-sm">
+  <table class="table table-responsive table-striped table-bordered table-sm">
     <thead>
       <tr>
         <th [width]="20"></th>
@@ -15,6 +15,11 @@
       </tr>
     </thead>
     <tbody>
+      @if (tasks.length == 0) {
+        <tr>
+          <td class="text-center" colspan="10">No itens</td>
+        </tr>
+      }
       @for (task of tasks; track $index) {
         <tr>
           <td>

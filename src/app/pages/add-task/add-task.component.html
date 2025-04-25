@@ -23,8 +23,7 @@
   <b>Description:</b>
   <textarea name="description" class="form-control form-control-sm" [(ngModel)]="task.description"></textarea>
 
-  <b class="mt-1">CheckList</b>
-  <hr />
+  <b class="mt-1">CheckList</b><br />
   @if (hasSubTasks() && task.ready) {
     <div class="progress mb-2">
       <div class="progress-bar" role="progressbar" [style.width.%]="getCheckedPercentage()" aria-valuenow="getCheckedPercentage()" aria-valuemin="0" aria-valuemax="100">
