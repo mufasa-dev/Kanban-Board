@@ -53,7 +53,9 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/Kanban-Board/",
+              "deployUrl": "/Kanban-Board/"
             },
             "development": {
               "optimization": false,
