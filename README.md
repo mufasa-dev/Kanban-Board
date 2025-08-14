@@ -1,6 +1,8 @@
 ## 📝 Kanban Board Application
 Welcome to the Kanban Board Application! 🚀 This is a dynamic web application built with Angular 19 and styled using Bootstrap. It provides an intuitive and user-friendly interface to help you manage your tasks efficiently. ✅
 
+[![My Skills](https://skillicons.dev/icons?i=angular,ts,html,scss,bootstrap)](https://skillicons.dev)
+
 ## 📖 Features
 🗂️ Create, Read, Update, and Delete (CRUD) tasks.
 
