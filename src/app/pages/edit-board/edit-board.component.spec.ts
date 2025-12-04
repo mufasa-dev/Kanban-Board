@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditBoardComponent } from './edit-board.component';
 
-describe('MainViewComponent', () => {
+describe('Edit Board', () => {
   let component: EditBoardComponent;
   let fixture: ComponentFixture<EditBoardComponent>;
 
